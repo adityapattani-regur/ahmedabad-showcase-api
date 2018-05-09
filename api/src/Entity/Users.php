@@ -29,6 +29,13 @@ class Users
      * @ORM\Column(nullable=true)
      */
     public $name;
+	
+	/**
+     * @var string The image of this user.
+     *
+     * @ORM\Column(nullable=true)
+     */
+    public $image;
 
     /**
      * @var string If google is linked.
