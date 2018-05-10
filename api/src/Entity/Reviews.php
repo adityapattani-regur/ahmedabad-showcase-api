@@ -28,7 +28,7 @@ class Reviews
 	
 	/**
 	 * @var integer The rating given in the review.
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     public $rating;
 	
@@ -40,7 +40,7 @@ class Reviews
 	
 	/**
 	 * @var string The images in the review.
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     public $reviewImages;
 	
