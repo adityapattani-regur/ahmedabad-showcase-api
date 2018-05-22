@@ -31,6 +31,12 @@ class Users
     public $name;
 	
 	/**
+     * @var string The email of this user.
+     * @ORM\Column(type="string", unique=true)
+     */
+    public $email;
+	
+	/**
      * @var string The image of this user.
      *
      * @ORM\Column(nullable=true)
@@ -68,6 +74,11 @@ class Users
     public function getId(): ?int
     {
         return $this->id;
+    }
+	
+	public function getEmail(): ?string
+    {
+        return $this->email;
     }
 }
 
