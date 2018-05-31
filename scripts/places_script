@@ -1,0 +1,38 @@
+import requests
+import json
+
+USER_LOCATION = "23.022505,72.571362"
+RADIUS = 10000
+API_KEY = "AIzaSyBGDienYkWVDtbCmSsbj1lcUqaBo-fWEQQ"
+
+GOOGLE_API_ENDPOINT = "https://maps.googleapis.com/maps/api/place/textsearch/json"
+OUR_API_ENDPOINT = "http://106.201.233.254:8080/places"
+
+HEADER_OUR_API = {"Content-Type" : "application/ld+json"}
+
+types = ["airport", "amusement_park", "aquarium", "art_gallery", "book_store", "bowling_alley"
+"bus_station", "cafe", "campground", "casino", "church", "city_hall", "hindu_temple",
+"library", "meal_delivery", "meal_takeaway", "mosque", "movie_theater", "museum", "night_club",
+"park", "restaurant", "shopping_mall", "spa", "stadium", "supermarket", "synagogue", "taxi_stand", "zoo"]
+
+for i in range(len(types)):
+    ENDPOINT_URL = GOOGLE_API_ENDPOINT + "?type=" + types[i] + "&location=" + USER_LOCATION + "&radius=" + str(RADIUS) + "&key=" + API_KEY
+
+    response = requests.get(ENDPOINT_URL)
+    placesResponse = json.loads(response.text)
+
+    for place in placesResponse['results']:
+        dataToSend = {}
+        dataToSend['name'] = place['name']
+        dataToSend['address'] = place['formatted_address']
+        dataToSend['latitude'] = place['geometry']['location']['lat']
+        dataToSend['longitude'] = place['geometry']['location']['lng']
+        dataToSend['city'] = "/cities/1"
+        dataToSend['description'] = ""
+
+        jsonDataToSend = json.dumps(dataToSend)
+        print(jsonDataToSend)
+
+        #postToOurAPI = request.post(url=OUR_API_ENDPOINT, data=jsonDataToSend, headers=HEADER_OUR_API)
+
+print(set(places))
