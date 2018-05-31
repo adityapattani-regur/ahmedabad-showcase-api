@@ -3,6 +3,7 @@ This repository contains the docker containers for the Ahmedabad Showcase API. C
 
 In order to start the API,
 - Start cmd and enter `docker-compose up -d`
+- Read the logs using `docker-compose logs -f php`, if you see a line saying `fpm is running`, the API-Platform has started successfully.
 
 To shut down the API:
 - Start cmd and enter `docker-compose down`
