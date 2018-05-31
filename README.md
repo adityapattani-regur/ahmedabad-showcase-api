@@ -7,3 +7,5 @@ In order to start the API,
 
 To shut down the API:
 - Start cmd and enter `docker-compose down`
+
+The *scripts* folder contains the CRON script as well as the script to call Google Places API to fill the database with places.
